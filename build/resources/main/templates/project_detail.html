@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="layout :: head('Edit Project')"></head>
+<body>
+<div th:replace="layout :: flash"></div>
+<header th:replace="layout :: header"></header>
+<nav th:replace="layout :: navbar"></nav>
+<section>
+    <div class="container wrapper">
+        <div class="project-list single">
+            <div class="project">
+                <h2 th:text="${project.name}">Website Project</h2>
+                <p th:text="${project.description}">Design and build a custom website</p>
+                <span th:class="'tag ' + ${project.status}" th:text="${project.status}">Active</span>
+            </div>
+            <div class="roles-collaborators">
+                <h3>Roles &amp; Collaborators</h3>
+                <div th:each="entry : ${roleCollaboratorMap}" class="list-item">
+                    <span class="primary" th:text="${entry.key.name}">Developer</span>
+                    <span class="secondary" th:text="${entry.value.name}">Michael Pemulis</span>
+                </div>
+            </div>
+            <div class="actions">
+                <a class="button" th:href="|${project.id}/edit.html|">Edit Project</a>
+                <a class="button" th:href="|${project.id}/collaborators.html|">Edit Collaborators</a>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

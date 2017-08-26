@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="layout :: head('Roles')"></head>
+<body>
+<div th:replace="layout :: flash"></div>
+<header th:replace="layout :: header"></header>
+<nav>
+    <ul>
+        <li><a th:href="@{/index.html}">Projects</a></li>
+        <li><a th:href="@{/collaborators.html}">Collaborators</a></li>
+        <li class="selected"><a th:href="@{/roles.html}">Roles</a></li>
+    </ul>
+</nav>
+<section>
+    <div class="container wrapper">
+        <form th:object="${role}" action="" method="post">
+            <h2>Manage Roles</h2>
+            <div>
+                <ul class="checkbox-list">
+                    <li th:each="role : ${roles}"><a th:href="|@{/roles/}${role.id}" th:text="${role.name}"
+                                                     class="primary"></a></li>
+                </ul>
+            </div>
+            <div class="actions add-new-role">
+                <input type="text" th:field="*{name}" th:classappend="${#fields.hasErrors('name')}? 'error' : ''"
+                       placeholder="New Role..."/>
+                <div class="error-message" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+                <button type="submit">Add</button>
+            </div>
+        </form>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,6 @@
+
+java -cp h2-1.4.191.jar org.h2.tools.Server
+
+jdbc:h2:tcp://localhost/~/../../Data/IdeaProjects/week7springhibernateproj/instateam
+
+jdbc:h2:tcp://localhost/~/../../Data/IdeaProjects/week7springhibernateproj/instateam/data/instateam
